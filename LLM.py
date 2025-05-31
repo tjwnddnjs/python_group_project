@@ -4,7 +4,7 @@ def generate_words(level,words_list):
         
     client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="",
+    api_key="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",
     )
 
     completion = client.chat.completions.create(
@@ -31,7 +31,7 @@ def generate_words(level,words_list):
 
     word_dict = json.loads(a)
     print(word_dict)
-
+generate_words('대학생', {})
     # start = a.find('{')
     # end   = a.rfind('}')
 
