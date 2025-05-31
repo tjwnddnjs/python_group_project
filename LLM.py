@@ -4,7 +4,7 @@ def generate_words(level,words_list):
         
     client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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",
+    api_key="",
     )
 
     completion = client.chat.completions.create(
