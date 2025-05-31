@@ -13,37 +13,39 @@ def generate_words(level,words_list):
         {
         "role": 'system',
         "content": f"""
-                1. {level} 어휘 수준의 단어를 추천해줘.
-                2. 30개의 단어를 추천해줘.
-                3. 출력은 **반드시** 아래 JSON 스키마로만 구성하고, 그 외 코멘트나 텍스트를 생성하지 마.
-                **JSON 스키마**:
+                1. recommend English words for {level} students.
+                2. recommend 30 words.
+                3. **make sure** the output is in a **Python dictionary data type**, Don't generate any other comments or text.
+                **Python dictionary data type**:
                 {{
-                "<영어단어1>":"<한글뜻1>",
-                "<영어단어2>":"<한글뜻2>",
-                … (총 30개)
+                  "English word 1" : "Korean meaning of English word 1",
+                  "English word 2" : "Korean meaning of English word 3",...
+                  "English word 30" : "Korean meaning of English word 30"
                 }} 
-                **{{내용}}의 형태여야해** 
-                4. {words_list} 단어는 추천에서 제외해줘.
+                4. exclude {words_list} from the recommendation.
     """
         }
     ]
     )
     a = completion.choices[0].message.content
 
-    start = a.find('{')
-    end   = a.rfind('}')
+    word_dict = json.loads(a)
+    print(word_dict)
 
-    # 유효 인덱스 검사 후 슬라이싱
-    if start != -1 and end != -1 and start < end:
-        json_str = a[start:end+1]
-    else:
-        json_str = ''
-    print(json_str)
-    try:
-        data= json.loads(json_str)
-    except:
-        print('조졌네네')
-        pass
+    # start = a.find('{')
+    # end   = a.rfind('}')
 
-    print(data,type(data))
-generate_words('대학생', {})
+#     # 유효 인덱스 검사 후 슬라이싱
+#     if start != -1 and end != -1 and start < end:
+#         json_str = a[start:end+1]
+#     else:
+#         json_str = ''
+#     print(json_str)
+#     try:
+#         data= json.loads(json_str)
+#     except:
+#         print('조졌네네')
+#         pass
+
+#     print(data,type(data))
+# generate_words('대학생', {})
