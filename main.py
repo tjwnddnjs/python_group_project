@@ -4,6 +4,7 @@ from pathlib import Path
 
 
 def main():
+    show_word = {}
     while True:
           
         print('기능 선택\n' \
@@ -13,7 +14,7 @@ def main():
         '4.나가기\n') 
     
         a = input("1, 2, 3, 4 입력: ")
-        show_word = {}
+
         #형변환 점검       
         try:
             answer = int(a)
@@ -25,6 +26,7 @@ def main():
             print('단어를 입력하세요(언제든 \'exit\'를 입력해 단어 입력을 끝낼 수 있습니다.)\n')
             input_word()
             continue
+
         elif answer == 2:
             while True:
                 num = int(input('불러올 단어의 갯수를 입력하세요: '))
@@ -37,12 +39,15 @@ def main():
                     print(show_word)
                     break
             continue
+        
         elif answer == 3:
             if not show_word:
                 print('단어장을 먼저 불러오세요')
                 continue
             else:
                 play_game(show_word)
+                continue
+
         elif answer == 4:
             print('프로그램을 종료합니다')
             return 

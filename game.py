@@ -107,4 +107,5 @@ def play_game(words):
         clock.tick(60)
 
     pygame.quit()
-    sys.exit()
+    return
+    #sys.exit()
