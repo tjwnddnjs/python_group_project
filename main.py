@@ -39,9 +39,9 @@ def main():
                     if not show_word:
                         if input('종료하시겠습니까?: Y/N ').strip().upper() == 'Y':
                             break
-                        else:
-                            print(show_word)
-                            break
+                    
+                    print(show_word)
+                    break
             elif choice == 'pack':
                 while True:
                     answer_2= input('단계 선택(all, 초등, 중고, 전문): ')
