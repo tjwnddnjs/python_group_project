@@ -1,10 +1,10 @@
 from openai import OpenAI
 import json
-def generate_words(level,words_list):
+def generate_sentence(example_sentence):
         
     client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key="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",
+    base_url="",
+    api_key="이거 또 커밋하면 자퇴한다",
     )
 
     completion = client.chat.completions.create(

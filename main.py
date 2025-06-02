@@ -1,7 +1,7 @@
 from wordbook import *
 from game import *
 from wordpack import *
-
+from LLM import *
 
 def main():
     show_word = {}
@@ -11,7 +11,8 @@ def main():
         '1.단어 저장\n' \
         '2.단어장\n' \
         '3.게임\n' \
-        '4.나가기\n') 
+        '4.예문 학습\n'\
+        '5.나가기\n') 
 
         a = input("1, 2, 3, 4 입력: ")
 
@@ -72,6 +73,13 @@ def main():
                 play_game(show_word)
                 continue
         elif answer == 4:
+            example_sentence = input('예문을 학습할 단어를 입력하세요. :') 
+            generate_sentence(example_sentence)
+        # 단어 입력 받고 만들어 놓은 make_sentence()함수에 인자로 넣어서 LLM딸깍
+        # 해당 함수는 LLM 모듈에서 불러 올게용
+            
+
+        elif answer == 5:
             print('프로그램을 종료합니다')
             return 
         else:
