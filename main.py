@@ -1,6 +1,6 @@
 from wordbook import *
 from game import *
-from pathlib import Path
+from wordpack import *
 
 
 def main():
@@ -26,28 +26,46 @@ def main():
             print('단어를 입력하세요(언제든 \'exit\'를 입력해 단어 입력을 끝낼 수 있습니다.)\n')
             input_word()
             continue
-
         elif answer == 2:
-            while True:
-                num = int(input('불러올 단어의 갯수를 입력하세요: '))
-                show_word = show_wordbook(num)
-                if not show_word:
-                    if input('종료하시겠습니까?: Y/N ').strip().upper() == 'Y':
+            choice = input('나의 단어장 불러오기(\'my\') / 프로그램 단어 불러오기(\'pack\'): ').strip().lower()
+            if choice == 'my':
+                while True:
+                    try:
+                        num = int(input('불러올 단어의 갯수를 입력하세요: '))
+                    except ValueError:
+                        print('자연수 값을 넣으세요!')
+                        continue
+                    show_word = show_wordbook(num)
+                    if not show_word:
+                        if input('종료하시겠습니까?: Y/N ').strip().upper() == 'Y':
+                            break
+                        else:
+                            print(show_word)
+                            break
+            elif choice == 'pack':
+                while True:
+                    answer_2= input('단계 선택(all, 초등, 중고, 전문): ')
+                    try:
+                        number = int(input('단어 개수: '))
+                    except:
+                        print('자연수 값을 넣으세요!\n')
+                        continue
+                    show_word = pick_up_word(answer_2, number) 
+                    if not show_word:
+                        print('단계를 다시 선택하세요!\n')
+                        continue
+                    else:
+                        print(show_word)
                         break
-                    continue
-                else:
-                    print(show_word)
-                    break
             continue
-        
+          
         elif answer == 3:
             if not show_word:
-                print('단어장을 먼저 불러오세요')
+                print('단어를 먼저 불러오세요')
                 continue
             else:
                 play_game(show_word)
                 continue
-
         elif answer == 4:
             print('프로그램을 종료합니다')
             return 
