@@ -6,13 +6,13 @@ from wordpack import *
 def main():
     show_word = {}
     while True:
-          
+
         print('기능 선택\n' \
         '1.단어 저장\n' \
         '2.단어장\n' \
         '3.게임\n' \
         '4.나가기\n') 
-    
+
         a = input("1, 2, 3, 4 입력: ")
 
         #형변환 점검       
@@ -21,11 +21,13 @@ def main():
         except ValueError:
             print("1 이상 4 이하 정수 값 하나만 입력하세요!")
             continue
-    
+
+        
         if answer == 1:
-            print('단어를 입력하세요(언제든 \'exit\'를 입력해 단어 입력을 끝낼 수 있습니다.)\n')
+            print('단어를 입력하세요(언제든 \'exit\'를 입력해 단어 입력을 끝낼 수 있습니다.)\n**\'단어, 뜻\'의 형태로 입력하세요**')
             input_word()
-            continue
+            continue    
+
         elif answer == 2:
             choice = input('나의 단어장 불러오기(\'my\') / 프로그램 단어 불러오기(\'pack\'): ').strip().lower()
             if choice == 'my':
@@ -38,6 +40,9 @@ def main():
                     show_word = show_wordbook(num)
                     if not show_word:
                         if input('종료하시겠습니까?: Y/N ').strip().upper() == 'Y':
+                            break
+                        else:
+                            print(show_word)
                             break
                     
                     print(show_word)
@@ -58,7 +63,7 @@ def main():
                         print(show_word)
                         break
             continue
-          
+
         elif answer == 3:
             if not show_word:
                 print('단어를 먼저 불러오세요')
@@ -78,4 +83,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-

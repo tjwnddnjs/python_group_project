@@ -2,15 +2,21 @@ import json
 import random
 
 def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
+
     word = {}
     while True:
-        a = input('word: ').strip().lower()
-        if a == 'exit':
+        input_word = input('>> ')
+        if input_word.strip() == 'exit':
             break
-        b = input('meaning: ')
-        if b == 'exit':
-            break
-        word[a] = b
+        save_word = input_word.split(',')
+        if len(save_word) >=3 :
+            print('단어 저장 실패. 형식을 다시 확인해주세요.')
+            continue
+        try:
+            word[save_word[0].strip().lower()] = save_word[1].strip().lower()
+        except:
+            print('단어 저장 실패. 형식을 다시 확인해주세요.')
+
         
 #단어장 생성 or 업데이트        
     answer = input('단어장 파일을 생성하셨나요?: Y/N ').strip().upper()
