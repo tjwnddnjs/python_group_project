@@ -73,8 +73,7 @@ def main():
                 play_game(show_word)
                 continue
         elif answer == 4:
-            example_sentence = input('예문을 학습할 단어를 입력하세요. :') 
-            generate_sentence(example_sentence)
+            generate_sentence()
         # 단어 입력 받고 만들어 놓은 make_sentence()함수에 인자로 넣어서 LLM딸깍
         # 해당 함수는 LLM 모듈에서 불러 올게용
             
@@ -83,7 +82,7 @@ def main():
             print('프로그램을 종료합니다')
             return 
         else:
-            print("1 이상 4 이하 정수 값 하나만 입력하세요!")
+            print("1과 5사이의의 정수 값 하나만 입력하세요!")
             continue
 
     # 단어 저장 = add_word() 불러오고, 단어장 = show_word() 불러오고, 
