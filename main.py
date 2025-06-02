@@ -23,7 +23,6 @@ def main():
             print("1 이상 4 이하 정수 값 하나만 입력하세요!")
             continue
 
-        
         if answer == 1:
             print('단어를 입력하세요(언제든 \'exit\'를 입력해 단어 입력을 끝낼 수 있습니다.)\n**\'단어, 뜻\'의 형태로 입력하세요**')
             input_word()
@@ -61,7 +60,10 @@ def main():
                         print('단계를 다시 선택하세요!\n')
                         continue
                     else:
-                        print(show_word)
+                        print(f"{'[단어]':13s}{'[의미]'}")
+                        for words in show_word:
+                            print(f"{words:14s}: {show_word[words]}")
+                        print('\n')
                         break
             continue
 
