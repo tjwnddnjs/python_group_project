@@ -32,9 +32,9 @@ def main():
                 num = int(input('불러올 단어의 갯수를 입력하세요: '))
                 show_word = show_wordbook(num)
                 if not show_word:
+                    if input('종료하시겠습니까?: Y/N ').strip().upper() == 'Y':
+                        break
                     continue
-                elif a =='null':
-                    break
                 else:
                     print(show_word)
                     break
