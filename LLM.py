@@ -13,7 +13,7 @@ def generate_sentence():
             elif study_answer == 'y' :
                 client = OpenAI(
                 base_url="https://openrouter.ai/api/v1",
-                api_key="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",
+                api_key="",
                 )
 
                 completion = client.chat.completions.create(
