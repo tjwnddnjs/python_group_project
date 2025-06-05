@@ -6,7 +6,7 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
     word = {}
     while True:
         input_word = input('>> ')
-        if input_word.strip() == 'exit':
+        if input_word.strip() == '!exit':
             break
         save_word = input_word.split(',')
         if len(save_word) >=3 :
@@ -16,8 +16,18 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
             word[save_word[0].strip().lower()] = save_word[1].strip().lower()
         except:
             print('단어 저장 실패. 형식을 다시 확인해주세요.')
+    print('\n[단어 확인]')
+    for i in word:
+        print(f"{i}, {word[i]}")
+    modify = list(input("오류가 있는 단어는 삭제하세요(삭제할 영단어만 입력, 여러 개 입력 가능, 없으면 엔터): ").split(','))
+    for j in modify:
+        try: 
+            del word[j.strip()]
+            print(f'{j.strip()}단어 삭제 성공 :)')
+        except:
+            print(f'{j.strip()}단어 삭제 실패 :(')
 
-        
+
 #단어장 생성 or 업데이트        
     answer = input('단어장 파일을 생성하셨나요?: Y/N ').strip().upper()
         

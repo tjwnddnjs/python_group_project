@@ -24,7 +24,7 @@ def main():
             continue
 
         if answer == 1:
-            print('단어를 입력하세요(언제든 \'exit\'를 입력해 단어 입력을 끝낼 수 있습니다.)\n**\'단어, 뜻\'의 형태로 입력하세요**')
+            print('단어를 입력하세요(언제든 \'!exit\'를 입력해 단어 입력을 끝낼 수 있습니다.)\n**\'단어, 뜻\'의 형태로 입력하세요**')
             input_word()
             continue    
 
@@ -39,11 +39,11 @@ def main():
                         continue
                     show_word = show_wordbook(num)
                     if not show_word:
-                        if input('종료하시겠습니까?: Y/N ').strip().upper() == 'Y':
+                        kdic = input('종료하시겠습니까?: Y/N ').strip().upper()
+                        if kdic == 'Y':
                             break
-                        else:
-                            print(show_word)
-                            break
+                        elif kdic == 'N':
+                            continue
                     
                     print(show_word)
                     break

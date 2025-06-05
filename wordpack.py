@@ -1,5 +1,4 @@
 import pandas as pd
-import random
 def pick_up_word(answer, num):
     level = ['all','초등', '중고', '전문']
     picked_word ={}
