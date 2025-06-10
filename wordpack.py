@@ -22,7 +22,18 @@ def append_picked_word(picked_word):
             note_path = input('파일명을 입력하세요(\'파일명.json\'의 형태로 입력하세요):').strip()
             if note_path[-5:] != '.json':
                 print('파일명 작성법을 지키세요!!')
-                continue          
+                continue
+            try:
+                 with open(note_path, "r", encoding="utf-8") as f:
+                     pass
+            except FileNotFoundError:
+                print('단어장이 존재하지 않습니다.\n')
+                answer_1 = input('다시 입력하시겠습니까? Y/N').strip().upper()
+                if answer_1 == 'Y':
+                    continue
+                elif answer_1 == 'N':
+                    print('단어 입력을 종료합니다')
+                    return          
             update_wordbook(picked_word, note_path)
             return
     elif answer == 'N':

@@ -50,6 +50,17 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
             if note_path[-5:] != '.json':
                 print('파일명 작성법을 지키세요!!')
                 continue
+            try:
+                 with open(note_path, "r", encoding="utf-8") as f:
+                     pass
+            except FileNotFoundError:
+                print('단어장이 존재하지 않습니다.\n')
+                answer_1 = input('다시 입력하시겠습니까? Y/N').strip().upper()
+                if answer_1 == 'Y':
+                    continue
+                elif answer_1 == 'N':
+                    print('단어 입력을 종료합니다')
+                    return
 
             update_wordbook(word, note_path)
             return
