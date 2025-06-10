@@ -64,12 +64,13 @@ def main():
                         for words in show_word:
                             print(f"{words:14s}: {show_word[words]}")
                         print('\n')
+                        append_picked_word(show_word)
                         break
             continue
 
         elif answer == 3:
             if not show_word:
-                print('단어를 먼저 불러오세요')
+                print('**단어를 먼저 불러오세요**')
                 continue
             else:
                 play_game(show_word)
@@ -78,7 +79,7 @@ def main():
             generate_sentence()
         # 단어 입력 받고 만들어 놓은 make_sentence()함수에 인자로 넣어서 LLM딸깍
         # 해당 함수는 LLM 모듈에서 불러 올게용
-            
+
 
         elif answer == 5:
             print('프로그램을 종료합니다')
@@ -91,4 +92,4 @@ def main():
     # 게임 = play_game()불러오고, 나가기 = 나갔다는 문구랑 함께 main.py종료 할 수 있게 plz
 
 if __name__ == "__main__":
-	main()
+   main()

@@ -19,13 +19,26 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
     print('\n[단어 확인]')
     for i in word:
         print(f"{i}, {word[i]}")
-    modify = list(input("오류가 있는 단어는 삭제하세요(삭제할 영단어만 입력, 여러 개 입력 가능, 없으면 엔터): ").split(','))
-    for j in modify:
-        try: 
-            del word[j.strip()]
-            print(f'{j.strip()}단어 삭제 성공 :)')
-        except:
-            print(f'{j.strip()}단어 삭제 실패 :(')
+    while True:
+        modify = list(input("오류가 있는 단어는 삭제하세요(삭제할 영단어만 입력, 여러 개 입력 가능, 없으면 엔터): ").split(','))
+        for j in modify:
+            try: 
+                del word[j.strip()]
+                print(f'{j.strip()}단어 삭제 성공 :)')
+            except:
+                print(f'{j.strip()}단어 삭제 실패 :(')
+        while True:
+            end = input('단어 삭제를 완료하시겠습니까?(Y/N) : ')
+            if end.lower().strip() == 'y' or end.lower().strip() == 'n':
+                break
+            else:
+                print("**형식에 맞게 다시 입력해주세요**")
+                continue
+
+        if end.lower().strip() == 'y':
+            break
+        else:
+            continue
 
 
 #단어장 생성 or 업데이트        
@@ -47,6 +60,13 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
             if note_path[-5:] != '.json':
                 print('파일명 작성법을 지키세요!!')
                 continue
+
+            try:
+                 with open(note_path, "r", encoding="utf-8") as f:
+                     print("**파일이 이미 존재합니다. 파일명을 다시 입력해주세요**")
+                     continue
+            except FileNotFoundError:
+                pass
 
             with open(note_path, "w", encoding="utf-8") as f:
                 json.dump(word, f, ensure_ascii=False, indent=4)
