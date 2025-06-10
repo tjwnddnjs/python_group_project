@@ -15,7 +15,6 @@ def play_game(words):
 
     wrong = pygame.image.load("wrong.png")
     wrong = pygame.transform.scale(wrong, (350, 350))
-    #무지성 푸앙이 도배
 
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("산성비 타자 게임")

@@ -7,7 +7,7 @@ def main():
     show_word = {}
     while True:
 
-        print('기능 선택\n' \
+        print('\n기능 선택\n' \
         '1.단어 저장\n' \
         '2.단어장\n' \
         '3.게임\n' \

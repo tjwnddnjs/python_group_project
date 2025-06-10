@@ -2,8 +2,8 @@ from openai import OpenAI
 import json
 def generate_sentence():
     while True:
-        example_word = input('학습할 단어를 입력하세요.(학습 종료:exit) :').strip().lower()
-        if example_word == 'exit':
+        example_word = input('학습할 단어를 입력하세요.(학습 종료:!exit) :').strip().lower()
+        if example_word == '!exit':
             break
         while True:
             study_answer = input(f"{example_word}에 대한 학습 진행 Y/N: ").strip().lower()
@@ -35,7 +35,6 @@ def generate_sentence():
                 ]
                 )
                 print('\n'+'-'*40+'\n'+completion.choices[0].message.content+'\n'+'-'*40+'\n')
-                # print('우리 LLM 정상 영업 합니다.')
 
                 break
             else:
