@@ -6,7 +6,7 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
     word = {}
     while True:
         input_word = input('>> ')
-        if input_word.strip() == '!exit':
+        if input_word.strip().lower() == '!exit':
             break
         save_word = input_word.split(',')
         if len(save_word) >=3 :
@@ -59,7 +59,7 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
                 if answer_1 == 'Y':
                     continue
                 elif answer_1 == 'N':
-                    print('단어 입력을 종료합니다')
+                    print('단어 입력을 종료합니다, 메인 화면으로 돌아갑니다.')
                     return
 
             update_wordbook(word, note_path)

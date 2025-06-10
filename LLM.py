@@ -13,7 +13,7 @@ def generate_sentence():
             elif study_answer == 'y' :
                 client = OpenAI(
                 base_url="https://openrouter.ai/api/v1",
-                api_key="",
+                api_key="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",
                 )
 
                 completion = client.chat.completions.create(
@@ -22,9 +22,10 @@ def generate_sentence():
                     {
                     "role": 'system',
                     "content": f"""
-                    1. {example_word}에 대한 단어 뜻과 예시 문장을 출력해.
+                    1. {example_word}에 대한 단어 뜻과 예시 문장을 출력해. 
+                    만약 {example_word}가 존재하지 않는 단어라면 "존재하지 않는 단어입니다."라는 메세지를 출력해
                     2. 형식 
-                    {example_word} : **{example_word}의 단어 뜻**
+                    {example_word} : 단어 뜻
                     {example_word}에 대한 영어로 된 예시 문장 1개
                     {example_word}에 대한 한글로 된 해석 문장 1개
                     **예시 문장을 생성할 때, 문장에 사용되는 총 단어수 가 20개를 넘지 않게 해.**

@@ -32,7 +32,7 @@ def append_picked_word(picked_word):
                 if answer_1 == 'Y':
                     continue
                 elif answer_1 == 'N':
-                    print('단어 입력을 종료합니다')
+                    print('단어 입력을 종료합니다, 메인 화면으로 돌아갑니다.')
                     return          
             update_wordbook(picked_word, note_path)
             return
