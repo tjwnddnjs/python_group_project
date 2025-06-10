@@ -12,6 +12,4 @@ def pick_up_word(answer, num):
             sampled_df = df.sample(num)
             picked_word = dict(zip(sampled_df['단어'], sampled_df['뜻']))
             return picked_word
-
-
-    
+        

@@ -49,9 +49,9 @@ def main():
                     break
             elif choice == 'pack':
                 while True:
-                    answer_2= input('단계 선택(all, 초등, 중고, 전문): ')
+                    answer_2= input('단계 선택(all, 초등(800개), 중고(1800개), 전문(400개)): ')
                     try:
-                        number = int(input('단어 개수: '))
+                        number = int(input('\n**최대 갯수 초과 입력 시 최대 갯수 출력** \n단어 개수: '))
                     except:
                         print('자연수 값을 넣으세요!\n')
                         continue
