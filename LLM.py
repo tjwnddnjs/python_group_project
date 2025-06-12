@@ -25,7 +25,7 @@ def generate_sentence():
                     1. {example_word}에 대한 단어 뜻과 예시 문장을 출력해. 
                     만약 {example_word}가 존재하지 않는 단어라면 "존재하지 않는 단어입니다."라는 메세지를 출력해
                     2. 형식 
-                    {example_word} : 단어 뜻
+                    {example_word} : {example_word}의 한글 번역역
                     {example_word}에 대한 영어로 된 예시 문장 1개
                     {example_word}에 대한 한글로 된 해석 문장 1개
                     **예시 문장을 생성할 때, 문장에 사용되는 총 단어수 가 20개를 넘지 않게 해.**
