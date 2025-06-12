@@ -37,6 +37,9 @@ def main():
                     except ValueError:
                         print('자연수 값을 넣으세요!')
                         continue
+                    if num <= 0:
+                        print('자연수 값을 넣으세요!')
+                        continue
                     show_word = show_wordbook(num)
                     if not show_word:
                         kdic = input('종료하시겠습니까?: Y/N ').strip().upper()
@@ -71,6 +74,9 @@ def main():
         elif answer == 3:
             if not show_word:
                 print('**단어를 먼저 불러오세요**')
+                continue
+            elif show_word == 'null':
+                print("게임 실행을 위한 단어가 존재하지 않습니다")
                 continue
             else:
                 play_game(show_word)

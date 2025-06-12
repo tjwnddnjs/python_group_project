@@ -15,7 +15,13 @@ def pick_up_word(answer, num):
             return picked_word
 
 def append_picked_word(picked_word):
-    answer = input('단어장 파일을 생성하셨나요?: Y/N ').strip().upper()
+    while True:
+        answer = input('단어장 파일을 생성하셨나요?: Y/N ').strip().upper()
+        if answer != 'Y' and answer != 'N':
+            print('형식에 맞게 입력해주세요')    
+            continue
+        else:
+            break
         
     if answer == 'Y':
         while True:

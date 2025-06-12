@@ -9,8 +9,12 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
         if input_word.strip().lower() == '!exit':
             break
         save_word = input_word.split(',')
-        if len(save_word) >=3 :
+
+        if len(save_word) !=2 or input_word.strip().lower() == ',':
             print('단어 저장 실패. 형식을 다시 확인해주세요.')
+            continue
+        if save_word[0] == ' ' or save_word[1] == ' ':
+            print('**단어는 공백일 수 없습니다**')
             continue
         try:
             word[save_word[0].strip().lower()] = save_word[1].strip().lower()
@@ -42,8 +46,13 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
 
 
 #단어장 생성 or 업데이트        
-    answer = input('단어장 파일을 생성하셨나요?: Y/N ').strip().upper()
-        
+    while True:
+        answer = input('단어장 파일을 생성하셨나요?: Y/N ').strip().upper()
+        if answer != 'Y' and answer != 'N':
+            print('형식에 맞게 입력해주세요')    
+            continue
+        else:
+            break
     if answer == 'Y':
         while True:
             note_path = input('파일명을 입력하세요(\'파일명.json\'의 형태로 입력하세요):').strip()
@@ -51,8 +60,8 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
                 print('파일명 작성법을 지키세요!!')
                 continue
             try:
-                 with open(note_path, "r", encoding="utf-8") as f:
-                     pass
+                with open(note_path, "r", encoding="utf-8") as f:
+                    pass
             except FileNotFoundError:
                 print('단어장이 존재하지 않습니다.\n')
                 answer_1 = input('다시 입력하시겠습니까? Y/N').strip().upper()
@@ -73,9 +82,9 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
                 continue
 
             try:
-                 with open(note_path, "r", encoding="utf-8") as f:
-                     print("**파일이 이미 존재합니다. 파일명을 다시 입력해주세요**")
-                     continue
+                with open(note_path, "r", encoding="utf-8") as f:
+                    print("**파일이 이미 존재합니다. 파일명을 다시 입력해주세요**")
+                    continue
             except FileNotFoundError:
                 pass
 
@@ -116,6 +125,9 @@ def show_wordbook(num_of_word):
             return 'null' 
     #값 반환
         number = len(show_word)
+        if number == 0:
+            print('단어장이 비어있습니다')
+            return {}
         if num_of_word > number:
             print(f'불러올 단어가 너무 많습니다. 현재 {number}개의 단어가 저장되어 있습니다.')
             return {}

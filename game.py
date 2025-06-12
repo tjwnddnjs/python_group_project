@@ -1,6 +1,5 @@
 import pygame
 import random
-import os
 
 def play_game(words):
     
