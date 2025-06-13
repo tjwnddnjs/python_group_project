@@ -13,8 +13,11 @@ def input_word(): #영단어랑 뜻 딕셔너리 형태로 저장함.
         if len(save_word) !=2 or input_word.strip().lower() == ',':
             print('단어 저장 실패. 형식을 다시 확인해주세요.')
             continue
-        if save_word[0] == ' ' or save_word[1] == ' ':
+        if save_word[0] in ' '  or save_word[1] in ' ':
             print('**단어는 공백일 수 없습니다**')
+            continue
+        elif not save_word[0] or not save_word[1]:
+            print('단어를 입력하세요')
             continue
         try:
             word[save_word[0].strip().lower()] = save_word[1].strip().lower()

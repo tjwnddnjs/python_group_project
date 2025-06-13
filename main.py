@@ -77,6 +77,8 @@ def main():
                         print('\n')
                         append_picked_word(show_word)
                         break
+            else:
+                print('형식에 맞게 입력하세요. 메인화면으로 돌아갑니다.')
             continue
 
         elif answer == 3:

@@ -16,6 +16,19 @@ def pick_up_word(answer, num):
 
 def append_picked_word(picked_word):
     while True:
+        answer_1 = input('단어장에 추가하시겠습니까?: Y/N ').strip().upper()
+        if answer_1 != 'Y' and answer_1 != 'N':
+            print('형식에 맞게 입력해주세요')    
+            continue
+        else:
+            break
+        
+    if answer_1 == 'Y':
+        pass
+    elif answer_1 =='N':
+        return
+    
+    while True:
         answer = input('단어장 파일을 생성하셨나요?: Y/N ').strip().upper()
         if answer != 'Y' and answer != 'N':
             print('형식에 맞게 입력해주세요')    
