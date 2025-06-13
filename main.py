@@ -42,11 +42,19 @@ def main():
                         continue
                     show_word = show_wordbook(num)
                     if not show_word:
-                        kdic = input('종료하시겠습니까?: Y/N ').strip().upper()
+                        while True:
+                            kdic = input('종료하시겠습니까?: Y/N ').strip().upper()
+                            if kdic !='Y' and kdic!='N':
+                                print('형식에 맞게 입력해주세요.')
+                                continue
+                            else:
+                                break
+
                         if kdic == 'Y':
                             break
                         elif kdic == 'N':
                             continue
+                            
                     
                     print(show_word)
                     break

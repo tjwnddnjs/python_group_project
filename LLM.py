@@ -1,5 +1,5 @@
 from openai import OpenAI
-import json
+import re
 def generate_sentence():
     while True:
         example_word = input('학습할 단어를 입력하세요.(학습 종료:!exit) :').strip().lower()
@@ -13,7 +13,7 @@ def generate_sentence():
             elif study_answer == 'y' :
                 client = OpenAI(
                 base_url="https://openrouter.ai/api/v1",
-                api_key="",
+                api_key="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",
                 )
 
                 completion = client.chat.completions.create(
@@ -31,13 +31,25 @@ def generate_sentence():
                     **예시 문장을 생성할 때, 문장에 사용되는 총 단어수 가 20개를 넘지 않게 해.**
                     3. 2번 형식에서 작성한 형식 내 내용 외 다른 문장은 일절 출력하지마. 대답도 하지마.
 
-                    """ #프롬프트 다시 손 봐야함.
+                    """ 
                     }
                 ]
                 )
-                print('\n'+'-'*40+'\n'+completion.choices[0].message.content+'\n'+'-'*40+'\n')
+                lines =completion.choices[0].message.content.strip().split('\n')
+                
+                if len(lines) != 3: # 3줄 출력 아니면 일단 거르고 봄.
+                    print('LLM 모델의 비정상적 작동에 의해 중지되었습니다. 다시 시도해주세요.')
+                
+                elif re.search(r'[가-힣]', lines[1]): # 두 번째 줄에 한글 포함 = 거름
+                    print('LLM 모델의 비정상적 작동에 의해 중지되었습니다. 다시 시도해주세요.')
+                elif re.search(r'[a-zA-Z]', lines[2]): # 세 번째 줄에 영어 포함 = 거름
+                    print('LLM 모델의 비정상적 작동에 의해 중지되었습니다. 다시 시도해주세요.')
+                
+                else:
+                    print('\n'+'-'*40+'\n'+completion.choices[0].message.content+'\n'+'-'*40+'\n')
 
                 break
             else:
                 print("다시 입력해 주세요")
                 continue
+
